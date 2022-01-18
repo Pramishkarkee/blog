@@ -7,11 +7,11 @@ python3 manage.py runserver
 
 # user
 # super user:
-admin@admin.com
-admin
+email:admin@admin.com
+password:admin
 # writer:
-karkipramish18@gmail.com
-1234
+email:karkipramish18@gmail.com
+password:1234
 # admin:
-a@gmail.com
-1234
+email:a@gmail.com
+password:1234
