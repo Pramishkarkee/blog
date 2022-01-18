@@ -101,6 +101,12 @@ def blogdetail(request, bid=None):
                 like = Like.objects.filter(blog=bid).count()
                 comment = Comment.objects.filter(blog=bid)
                 return render(request, 'blog_detail.html', {'user': 'writer', 'id': id, 'name': name, 'contex': contex, 'name': name, "comment": comment, "like": like})
+            elif request.session['type'] == 'admin' or request.session['super_user']:
+                contex = Blog.objects.get(pk=bid, user=id)
+                name = contex.user.first_name + " " + contex.user.last_name
+                like = Like.objects.filter(blog=bid).count()
+                comment = Comment.objects.filter(blog=bid)
+                return render(request, 'blog_detail.html', {'user': 'admin', 'id': id, 'name': name, 'contex': contex, 'name': name, "comment": comment, "like": like})
 
     return HttpResponse("not found")
 
