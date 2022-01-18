@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+
+    <body>
+        {% include 'headers.html' %}
+        <div class="container">
+            {% for blg in contex %}
+            <div class="card">
+                <div class="card-header">
+                  {{blg.title}}
+                </div>
+                <div class="card-body">
+                  <p class="card-text">{{blg.blog}}</p>
+                  <a href="{% url 'blog-detail-by-id' blg.pk%}" class="btn btn-primary">detail</a>
+                </div>
+                <div class="card-header">
+                    <button class="btn btn-primary btn-sm"> like </button>   <button class="btn  btn-sm">comment</button>
+                  </div>
+              </div>
+              {% endfor %}
+        </div>
+        {% include 'footers.html' %}
+    </body>
+</html>

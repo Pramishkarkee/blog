@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/admin.css' %}"
+    />
+    <!-- Boxicons CDN Link -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    {% include 'admin/header.html' %}
+    <section class="home-section">
+      {% include 'admin/navbar.html' %}
+      <div class="home-content">
+        <div class="overview-boxes">
+          <form action="admin_createuser" method="POST">
+            {% csrf_token %}
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" required />
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="last_name" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+            <label for="email">Password</label>
+            <input type="password" id="password" name="password" required />
+            <label for="email">Role</label>
+            <select name="user_type" id="user_type">
+              <option value="writer">Writer</option>
+              <option value="admin">Admin</option>
+            </select>
+
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </section>
+
+    {% include 'admin/footer.html'%}
+  </body>
+</html>

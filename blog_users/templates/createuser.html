@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'css/createuser.css'%}" />
+  </head>
+  <body>
+    {% include 'headers.html' %}
+
+    <div class="container">
+      {% if error %} {{message}} {% endif %}
+
+      <form action="/createuser" method="POST">
+        {% csrf_token %}
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          id="fname"
+          name="first_name"
+          placeholder="Your name.."
+          required
+        />
+
+        <label for="lname">Last Name</label>
+        <input
+          type="text"
+          id="lname"
+          name="last_name"
+          placeholder="Your last name.."
+          required
+        />
+
+        <label for="country">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Your email"
+          required
+        />
+
+        <label for="country">password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="password"
+          required
+        />
+
+        <label for="country">Confirm Password</label>
+        <input
+          type="password"
+          id="password1"
+          name="password1"
+          placeholder="confirm password"
+          required
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

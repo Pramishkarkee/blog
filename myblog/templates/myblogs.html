@@ -1,0 +1,28 @@
+<html>
+<head>
+</head>
+<body>
+
+    {% include 'headers.html' %}
+
+<div class="container">
+    {% if error %}
+      {{message}}
+    {% endif %}
+<div>
+    <a href="/blogs/post">create blog</a>
+</div>
+{% for con in contex %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{con.title}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+      <p class="card-text">{{con.blog}}</p>
+      <a href="{% url 'blog-detail' con.id %}" class="card-link">more</a>
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+</body>
+</html>

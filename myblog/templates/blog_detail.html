@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+    <head>
+        
+    </head>
+    <body>
+        {% include 'headers.html' %}
+        </script>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                  {{contex.title}}
+                </div>
+                <div class="card-body">
+
+                  <p class="card-text">{{contex.blog}}</p>
+                </div>
+                <div class="card-header">
+                    {% if id %}
+                    <form class="like-form" action="/blogs/like" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" id="blog" name="blog" value={{contex.id}}>
+                    <input type="hidden" id="user" name="user" value={{id}}>
+                    
+                    <button type="submit" class="btn btn-primary btn-sm" onclick="like()">{{like}} like </button>
+                    </form>
+                    {% else %}
+                    <button class="btn btn-primary btn-sm">{{like}} like </button>
+                    {% endif %}
+
+                  </div>
+                  {% if id %}
+                  <div>
+                      <form action="/blogs/comment" method="post">
+                        {% csrf_token %}
+                      <textarea row="3" name="comment"></textarea>
+                      <input type="hidden" id="id" name="blog" value={{contex.id}}>
+                      <input type="hidden" id="id" name="user" value={{id}}>
+                      <button type="submit">comment</button>
+                      </form>
+                  </div>
+                  {% endif %}
+                {% for com in comment %}
+                    <div>
+                        <h4>{{com.user.first_name}}</h4>
+                        {{com.comment}}
+                    </div>
+                {% endfor %}
+              </div>
+        </div>
+    </body>
+</html>

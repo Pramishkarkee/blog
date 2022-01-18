@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/admin.css' %}"
+    />
+
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    {% include 'admin/header.html' %}
+    <section class="home-section">
+      {% include 'admin/navbar.html' %}
+      <div class="home-content">
+        <div class="overview-boxes">
+          <a href="admin_createuser"
+            ><button class="btn btn-primary">Create User</button></a
+          >
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in contex %}
+              <tr>
+                <th scope="row">{{contex.count}}</th>
+
+                <td>{{user.first_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.user_type}}</td>
+                <td>
+                  <button class="btn btn-danger">Delete</button>
+                  <button class="btn btn btn-primary">Edit</button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    {% include 'admin/footer.html'%}
+  </body>
+</html>
